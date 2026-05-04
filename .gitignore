@@ -1,0 +1,27 @@
+# Python build / cache artefacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+build/
+dist/
+.venv/
+venv/
+.env
+.env.*
+
+# Tooling caches
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# This repository is the *final coursework submission* folder, so the
+# generated dataset (data/), the deterministic run outputs (runs/), and
+# the report artefacts (artifacts/) are all tracked on purpose so the
+# grader sees the reproduced numbers without having to re-run anything.
+# The full pipeline can still be regenerated bit-for-bit with
+# `make reset && make dataset && make eval-baseline && make search ROUNDS=4 SEED=7 && make report`.

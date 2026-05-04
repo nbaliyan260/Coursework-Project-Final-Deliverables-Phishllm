@@ -1,0 +1,41 @@
+{
+  "candidate_name": "round1_brand_recall-crp_recall-mismatch_or_crp-thr75",
+  "num_samples": 142,
+  "tp": 72,
+  "fp": 20,
+  "tn": 50,
+  "fn": 0,
+  "precision": 0.7826,
+  "recall": 1.0,
+  "f1": 0.878,
+  "fpr": 0.2857,
+  "fnr": 0.0,
+  "accuracy": 0.8592,
+  "recall_ci_lo": 1.0,
+  "recall_ci_hi": 1.0,
+  "median_runtime_sec": 1.35,
+  "p95_runtime_sec": 1.35,
+  "estimated_cost_per_1k": 1.8,
+  "failure_buckets": {
+    "brand_hallucination": 20,
+    "alias_false_positive": 0,
+    "brand_miss": 0,
+    "crp_miss": 0,
+    "hidden_login_miss": 0,
+    "fusion_miss": 0,
+    "prompt_injection_failure": 0,
+    "api_or_parser_failure": 0
+  },
+  "confusion": {
+    "benign": {
+      "benign": 50,
+      "phish": 20
+    },
+    "phish": {
+      "benign": 0,
+      "phish": 72
+    }
+  },
+  "respects_precision_floor": false,
+  "respects_runtime_budget": true
+}

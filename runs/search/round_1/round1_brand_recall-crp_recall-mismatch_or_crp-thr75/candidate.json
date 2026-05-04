@@ -1,0 +1,17 @@
+{
+  "name": "round1_brand_recall-crp_recall-mismatch_or_crp-thr75",
+  "backend": "mock",
+  "brand_prompt": "brand_recall_v1",
+  "crp_prompt": "crp_recall_v1",
+  "use_logo_ocr": true,
+  "use_logo_caption": true,
+  "prompt_defense": true,
+  "popularity_validation": "cached",
+  "hosting_rule": "strict",
+  "max_interactions": 1,
+  "brand_confidence_min": 0.75,
+  "report_policy": "mismatch_or_crp",
+  "temperature": 0.0,
+  "runtime_budget_sec": 5.0,
+  "hypothesis": "Heuristic mutation targeting prompt-injection / typosquat resistance."
+}

@@ -1,0 +1,1 @@
+<html><body><h1>Citrix Workspace</h1><p>Authorised users only. Sign in with your corporate credentials.</p><form><input name='username'><input name='password' type='password'></form></body></html>

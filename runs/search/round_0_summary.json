@@ -1,0 +1,228 @@
+{
+  "round": 0,
+  "ranked_top_k": [
+    {
+      "name": "seed_balanced",
+      "candidate_name": "seed_balanced",
+      "num_samples": 142,
+      "tp": 72,
+      "fp": 0,
+      "tn": 70,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "accuracy": 1.0,
+      "recall_ci_lo": 1.0,
+      "recall_ci_hi": 1.0,
+      "median_runtime_sec": 1.35,
+      "p95_runtime_sec": 1.35,
+      "estimated_cost_per_1k": 1.8,
+      "failure_buckets": {
+        "brand_hallucination": 0,
+        "alias_false_positive": 0,
+        "brand_miss": 0,
+        "crp_miss": 0,
+        "hidden_login_miss": 0,
+        "fusion_miss": 0,
+        "prompt_injection_failure": 0,
+        "api_or_parser_failure": 0
+      },
+      "confusion": {
+        "benign": {
+          "benign": 70,
+          "phish": 0
+        },
+        "phish": {
+          "benign": 0,
+          "phish": 72
+        }
+      },
+      "respects_precision_floor": true,
+      "respects_runtime_budget": true
+    },
+    {
+      "name": "seed_robust",
+      "candidate_name": "seed_robust",
+      "num_samples": 142,
+      "tp": 72,
+      "fp": 0,
+      "tn": 70,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "accuracy": 1.0,
+      "recall_ci_lo": 1.0,
+      "recall_ci_hi": 1.0,
+      "median_runtime_sec": 1.7,
+      "p95_runtime_sec": 1.7,
+      "estimated_cost_per_1k": 2.3,
+      "failure_buckets": {
+        "brand_hallucination": 0,
+        "alias_false_positive": 0,
+        "brand_miss": 0,
+        "crp_miss": 0,
+        "hidden_login_miss": 0,
+        "fusion_miss": 0,
+        "prompt_injection_failure": 0,
+        "api_or_parser_failure": 0
+      },
+      "confusion": {
+        "benign": {
+          "benign": 70,
+          "phish": 0
+        },
+        "phish": {
+          "benign": 0,
+          "phish": 72
+        }
+      },
+      "respects_precision_floor": true,
+      "respects_runtime_budget": true
+    },
+    {
+      "name": "seed_low_cost",
+      "candidate_name": "seed_low_cost",
+      "num_samples": 142,
+      "tp": 53,
+      "fp": 0,
+      "tn": 70,
+      "fn": 19,
+      "precision": 1.0,
+      "recall": 0.7361,
+      "f1": 0.848,
+      "fpr": 0.0,
+      "fnr": 0.2639,
+      "accuracy": 0.8662,
+      "recall_ci_lo": 0.6296,
+      "recall_ci_hi": 0.8286,
+      "median_runtime_sec": 0.55,
+      "p95_runtime_sec": 0.55,
+      "estimated_cost_per_1k": 0.5,
+      "failure_buckets": {
+        "brand_hallucination": 0,
+        "alias_false_positive": 0,
+        "brand_miss": 19,
+        "crp_miss": 0,
+        "hidden_login_miss": 0,
+        "fusion_miss": 0,
+        "prompt_injection_failure": 0,
+        "api_or_parser_failure": 0
+      },
+      "confusion": {
+        "benign": {
+          "benign": 70,
+          "phish": 0
+        },
+        "phish": {
+          "benign": 19,
+          "phish": 53
+        }
+      },
+      "respects_precision_floor": true,
+      "respects_runtime_budget": true
+    }
+  ],
+  "pareto_frontier": [
+    {
+      "name": "seed_balanced",
+      "candidate_name": "seed_balanced",
+      "num_samples": 142,
+      "tp": 72,
+      "fp": 0,
+      "tn": 70,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "accuracy": 1.0,
+      "recall_ci_lo": 1.0,
+      "recall_ci_hi": 1.0,
+      "median_runtime_sec": 1.35,
+      "p95_runtime_sec": 1.35,
+      "estimated_cost_per_1k": 1.8,
+      "failure_buckets": {
+        "brand_hallucination": 0,
+        "alias_false_positive": 0,
+        "brand_miss": 0,
+        "crp_miss": 0,
+        "hidden_login_miss": 0,
+        "fusion_miss": 0,
+        "prompt_injection_failure": 0,
+        "api_or_parser_failure": 0
+      },
+      "confusion": {
+        "benign": {
+          "benign": 70,
+          "phish": 0
+        },
+        "phish": {
+          "benign": 0,
+          "phish": 72
+        }
+      },
+      "respects_precision_floor": true,
+      "respects_runtime_budget": true
+    },
+    {
+      "name": "seed_low_cost",
+      "candidate_name": "seed_low_cost",
+      "num_samples": 142,
+      "tp": 53,
+      "fp": 0,
+      "tn": 70,
+      "fn": 19,
+      "precision": 1.0,
+      "recall": 0.7361,
+      "f1": 0.848,
+      "fpr": 0.0,
+      "fnr": 0.2639,
+      "accuracy": 0.8662,
+      "recall_ci_lo": 0.6296,
+      "recall_ci_hi": 0.8286,
+      "median_runtime_sec": 0.55,
+      "p95_runtime_sec": 0.55,
+      "estimated_cost_per_1k": 0.5,
+      "failure_buckets": {
+        "brand_hallucination": 0,
+        "alias_false_positive": 0,
+        "brand_miss": 19,
+        "crp_miss": 0,
+        "hidden_login_miss": 0,
+        "fusion_miss": 0,
+        "prompt_injection_failure": 0,
+        "api_or_parser_failure": 0
+      },
+      "confusion": {
+        "benign": {
+          "benign": 70,
+          "phish": 0
+        },
+        "phish": {
+          "benign": 19,
+          "phish": 53
+        }
+      },
+      "respects_precision_floor": true,
+      "respects_runtime_budget": true
+    }
+  ],
+  "best_recall_under_floor": 1.0,
+  "failure_buckets_aggregate": {
+    "brand_hallucination": 22,
+    "alias_false_positive": 50,
+    "brand_miss": 95,
+    "crp_miss": 0,
+    "hidden_login_miss": 0,
+    "fusion_miss": 0,
+    "prompt_injection_failure": 12,
+    "api_or_parser_failure": 0
+  }
+}

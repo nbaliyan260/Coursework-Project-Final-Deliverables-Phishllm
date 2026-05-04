@@ -1,0 +1,41 @@
+{
+  "candidate_name": "seed_visual_only",
+  "num_samples": 142,
+  "tp": 41,
+  "fp": 0,
+  "tn": 70,
+  "fn": 31,
+  "precision": 1.0,
+  "recall": 0.5694,
+  "f1": 0.7257,
+  "fpr": 0.0,
+  "fnr": 0.4306,
+  "accuracy": 0.7817,
+  "recall_ci_lo": 0.4559,
+  "recall_ci_hi": 0.6721,
+  "median_runtime_sec": 1.25,
+  "p95_runtime_sec": 1.25,
+  "estimated_cost_per_1k": 1.8,
+  "failure_buckets": {
+    "brand_hallucination": 0,
+    "alias_false_positive": 0,
+    "brand_miss": 19,
+    "crp_miss": 0,
+    "hidden_login_miss": 0,
+    "fusion_miss": 0,
+    "prompt_injection_failure": 12,
+    "api_or_parser_failure": 0
+  },
+  "confusion": {
+    "benign": {
+      "benign": 70,
+      "phish": 0
+    },
+    "phish": {
+      "benign": 31,
+      "phish": 41
+    }
+  },
+  "respects_precision_floor": true,
+  "respects_runtime_budget": true
+}

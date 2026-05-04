@@ -1,0 +1,1 @@
+<html><body><h1>PayPal security center status</h1><p>All systems operational. No active incidents.</p></body></html>

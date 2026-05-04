@@ -1,0 +1,143 @@
+site_id,label,target_brand,is_crp,notes
+site_001,benign,chase.com,0,"legitimate status page, no login flow"
+site_002,benign,wellsfargo.com,1,legitimate login page on registered brand domain
+site_003,benign,bankofamerica.com,0,informational blog post mentioning password but not asking for one
+site_004,benign,microsoft.com,1,alias legitimate domain example (popularity validation should clear it)
+site_005,phish,paypal.com,1,hidden login behind continue button on hosting domain
+site_006,benign,facebook.com,0,"legitimate status page, no login flow"
+site_007,benign,facebook.com,1,alias legitimate domain example (popularity validation should clear it)
+site_008,benign,,0,legitimate dev project hosted on a SaaS platform; not a credential page
+site_009,benign,microsoft.com,1,alias legitimate domain example (popularity validation should clear it)
+site_010,phish,facebook.com,1,"typo-squatted domain, password field present"
+site_011,benign,google.com,1,legitimate login page on registered brand domain
+site_012,phish,dropbox.com,1,obvious brand mismatch phishing
+site_013,benign,,1,indie business with brand-like URL stem; URL-stem fallback should NOT flag
+site_014,phish,fortinet.com,1,"lesser-known enterprise brand, classical login"
+site_015,benign,microsoft.com,1,alias legitimate domain example (popularity validation should clear it)
+site_016,benign,dropbox.com,1,legitimate login page on registered brand domain
+site_017,phish,trustwallet.com,0,crypto-style phishing without classic password field
+site_018,benign,bankofamerica.com,0,"legitimate account dashboard, no credential field"
+site_019,benign,amazon.com,1,alias legitimate domain example (popularity validation should clear it)
+site_020,phish,netflix.com,1,obvious brand mismatch phishing
+site_021,benign,netflix.com,1,legitimate login page on registered brand domain
+site_022,benign,,0,legitimate dev project hosted on a SaaS platform; not a credential page
+site_023,phish,adobe.com,1,prompt injection attempt with hidden disclaimer
+site_024,benign,microsoft.com,1,alias legitimate domain example (popularity validation should clear it)
+site_025,phish,adobe.com,1,prompt injection attempt with hidden disclaimer
+site_026,benign,apple.com,0,informational blog post mentioning password but not asking for one
+site_027,benign,,1,indie business with brand-like URL stem; URL-stem fallback should NOT flag
+site_028,phish,sonicwall.com,1,"lesser-known enterprise brand, classical login"
+site_029,phish,bankofamerica.com,1,prompt injection attempt with hidden disclaimer
+site_030,phish,metamask.io,0,crypto-style phishing without classic password field
+site_031,benign,amazon.com,1,alias legitimate domain example (popularity validation should clear it)
+site_032,benign,netflix.com,0,"legitimate account dashboard, no credential field"
+site_033,benign,wellsfargo.com,0,"legitimate status page, no login flow"
+site_034,benign,,0,legitimate dev project hosted on a SaaS platform; not a credential page
+site_035,phish,linkedin.com,1,obvious brand mismatch phishing
+site_036,phish,hsbc.com,1,obvious brand mismatch phishing
+site_037,benign,facebook.com,1,legitimate login page on registered brand domain
+site_038,phish,amazon.com,1,"typo-squatted domain, password field present"
+site_039,phish,trustwallet.com,0,crypto-style phishing without classic password field
+site_040,phish,microsoft.com,1,obvious brand mismatch phishing
+site_041,benign,,1,indie business with brand-like URL stem; URL-stem fallback should NOT flag
+site_042,phish,google.com,1,obvious brand mismatch phishing
+site_043,phish,paypal.com,1,obvious brand mismatch phishing
+site_044,benign,microsoft.com,1,legitimate login page on registered brand domain
+site_045,benign,facebook.com,0,informational blog post mentioning password but not asking for one
+site_046,phish,netflix.com,1,prompt injection attempt with hidden disclaimer
+site_047,benign,linkedin.com,0,"legitimate status page, no login flow"
+site_048,benign,linkedin.com,0,"legitimate account dashboard, no credential field"
+site_049,phish,amazon.com,1,hidden login behind continue button on hosting domain
+site_050,benign,,1,indie business with brand-like URL stem; URL-stem fallback should NOT flag
+site_051,phish,amazon.com,1,prompt injection attempt with hidden disclaimer
+site_052,benign,apple.com,0,informational blog post mentioning password but not asking for one
+site_053,phish,paypal.com,1,hidden login behind continue button on hosting domain
+site_054,benign,chase.com,0,informational blog post mentioning password but not asking for one
+site_055,phish,apple.com,1,"typo-squatted domain, password field present"
+site_056,benign,,0,legitimate dev project hosted on a SaaS platform; not a credential page
+site_057,phish,facebook.com,1,"typo-squatted domain, password field present"
+site_058,benign,,0,legitimate dev project hosted on a SaaS platform; not a credential page
+site_059,benign,,1,indie business with brand-like URL stem; URL-stem fallback should NOT flag
+site_060,phish,paloaltonetworks.com,1,"lesser-known enterprise brand, classical login"
+site_061,phish,microsoft.com,1,"typo-squatted domain, password field present"
+site_062,benign,facebook.com,1,legitimate login page on registered brand domain
+site_063,phish,paypal.com,1,hidden login behind continue button on hosting domain
+site_064,phish,hsbc.com,1,prompt injection attempt with hidden disclaimer
+site_065,phish,phantom.app,0,crypto-style phishing without classic password field
+site_066,benign,linkedin.com,0,informational blog post mentioning password but not asking for one
+site_067,phish,metamask.io,0,crypto-style phishing without classic password field
+site_068,phish,fortinet.com,1,"lesser-known enterprise brand, classical login"
+site_069,benign,paypal.com,1,legitimate login page on registered brand domain
+site_070,phish,amazon.com,1,"typo-squatted domain, password field present"
+site_071,phish,sonicwall.com,1,"lesser-known enterprise brand, classical login"
+site_072,benign,microsoft.com,0,"legitimate account dashboard, no credential field"
+site_073,benign,,1,indie business with brand-like URL stem; URL-stem fallback should NOT flag
+site_074,phish,facebook.com,1,hidden login behind continue button on hosting domain
+site_075,phish,trustwallet.com,0,crypto-style phishing without classic password field
+site_076,benign,microsoft.com,1,alias legitimate domain example (popularity validation should clear it)
+site_077,phish,adobe.com,1,hidden login behind continue button on hosting domain
+site_078,phish,apple.com,1,"typo-squatted domain, password field present"
+site_079,benign,,0,legitimate dev project hosted on a SaaS platform; not a credential page
+site_080,phish,google.com,1,"typo-squatted domain, password field present"
+site_081,benign,facebook.com,0,"legitimate account dashboard, no credential field"
+site_082,benign,,0,legitimate dev project hosted on a SaaS platform; not a credential page
+site_083,benign,,1,indie business with brand-like URL stem; URL-stem fallback should NOT flag
+site_084,benign,wellsfargo.com,0,"legitimate account dashboard, no credential field"
+site_085,phish,ledger.com,0,crypto-style phishing without classic password field
+site_086,benign,,0,legitimate dev project hosted on a SaaS platform; not a credential page
+site_087,benign,chase.com,0,"legitimate account dashboard, no credential field"
+site_088,phish,paypal.com,1,obvious brand mismatch phishing
+site_089,phish,bankofamerica.com,1,prompt injection attempt with hidden disclaimer
+site_090,benign,microsoft.com,0,"legitimate status page, no login flow"
+site_091,phish,phantom.app,0,crypto-style phishing without classic password field
+site_092,benign,,0,legitimate dev project hosted on a SaaS platform; not a credential page
+site_093,phish,ledger.com,0,crypto-style phishing without classic password field
+site_094,phish,microsoft.com,1,"typo-squatted domain, password field present"
+site_095,benign,facebook.com,0,informational blog post mentioning password but not asking for one
+site_096,benign,hsbc.com,0,informational blog post mentioning password but not asking for one
+site_097,benign,linkedin.com,0,"legitimate status page, no login flow"
+site_098,phish,facebook.com,1,hidden login behind continue button on hosting domain
+site_099,phish,citrix.com,1,"lesser-known enterprise brand, classical login"
+site_100,benign,dropbox.com,0,"legitimate account dashboard, no credential field"
+site_101,phish,google.com,1,hidden login behind continue button on hosting domain
+site_102,benign,adobe.com,0,informational blog post mentioning password but not asking for one
+site_103,phish,sonicwall.com,1,"lesser-known enterprise brand, classical login"
+site_104,phish,fortinet.com,1,"lesser-known enterprise brand, classical login"
+site_105,benign,chase.com,0,informational blog post mentioning password but not asking for one
+site_106,benign,,0,legitimate dev project hosted on a SaaS platform; not a credential page
+site_107,benign,,1,indie business with brand-like URL stem; URL-stem fallback should NOT flag
+site_108,benign,apple.com,0,"legitimate account dashboard, no credential field"
+site_109,phish,facebook.com,1,hidden login behind continue button on hosting domain
+site_110,phish,sonicwall.com,1,"lesser-known enterprise brand, classical login"
+site_111,benign,dropbox.com,1,legitimate login page on registered brand domain
+site_112,benign,,1,indie business with brand-like URL stem; URL-stem fallback should NOT flag
+site_113,benign,hsbc.com,1,legitimate login page on registered brand domain
+site_114,phish,netflix.com,1,prompt injection attempt with hidden disclaimer
+site_115,phish,ledger.com,0,crypto-style phishing without classic password field
+site_116,phish,linkedin.com,1,obvious brand mismatch phishing
+site_117,benign,amazon.com,0,"legitimate status page, no login flow"
+site_118,benign,wellsfargo.com,0,"legitimate status page, no login flow"
+site_119,benign,facebook.com,1,alias legitimate domain example (popularity validation should clear it)
+site_120,phish,adobe.com,1,obvious brand mismatch phishing
+site_121,phish,paloaltonetworks.com,1,"lesser-known enterprise brand, classical login"
+site_122,phish,trustwallet.com,0,crypto-style phishing without classic password field
+site_123,phish,sonicwall.com,1,"lesser-known enterprise brand, classical login"
+site_124,phish,apple.com,1,"typo-squatted domain, password field present"
+site_125,benign,amazon.com,1,alias legitimate domain example (popularity validation should clear it)
+site_126,phish,apple.com,1,obvious brand mismatch phishing
+site_127,phish,apple.com,1,hidden login behind continue button on hosting domain
+site_128,phish,phantom.app,0,crypto-style phishing without classic password field
+site_129,phish,citrix.com,1,"lesser-known enterprise brand, classical login"
+site_130,phish,apple.com,1,"typo-squatted domain, password field present"
+site_131,phish,dropbox.com,1,hidden login behind continue button on hosting domain
+site_132,benign,,1,indie business with brand-like URL stem; URL-stem fallback should NOT flag
+site_133,benign,github.com,0,"legitimate account dashboard, no credential field"
+site_134,phish,paypal.com,1,"typo-squatted domain, password field present"
+site_135,phish,paypal.com,1,hidden login behind continue button on hosting domain
+site_136,benign,github.com,0,"legitimate status page, no login flow"
+site_137,phish,wellsfargo.com,1,prompt injection attempt with hidden disclaimer
+site_138,phish,amazon.com,1,prompt injection attempt with hidden disclaimer
+site_139,phish,amazon.com,1,prompt injection attempt with hidden disclaimer
+site_140,phish,paypal.com,1,obvious brand mismatch phishing
+site_141,phish,apple.com,1,prompt injection attempt with hidden disclaimer
+site_142,benign,paypal.com,0,"legitimate status page, no login flow"

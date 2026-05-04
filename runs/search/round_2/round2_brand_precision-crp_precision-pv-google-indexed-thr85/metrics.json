@@ -1,0 +1,41 @@
+{
+  "candidate_name": "round2_brand_precision-crp_precision-pv-google-indexed-thr85",
+  "num_samples": 142,
+  "tp": 53,
+  "fp": 0,
+  "tn": 70,
+  "fn": 19,
+  "precision": 1.0,
+  "recall": 0.7361,
+  "f1": 0.848,
+  "fpr": 0.0,
+  "fnr": 0.2639,
+  "accuracy": 0.8662,
+  "recall_ci_lo": 0.6286,
+  "recall_ci_hi": 0.8406,
+  "median_runtime_sec": 0.9,
+  "p95_runtime_sec": 0.9,
+  "estimated_cost_per_1k": 1.0,
+  "failure_buckets": {
+    "brand_hallucination": 0,
+    "alias_false_positive": 0,
+    "brand_miss": 19,
+    "crp_miss": 0,
+    "hidden_login_miss": 0,
+    "fusion_miss": 0,
+    "prompt_injection_failure": 0,
+    "api_or_parser_failure": 0
+  },
+  "confusion": {
+    "benign": {
+      "benign": 70,
+      "phish": 0
+    },
+    "phish": {
+      "benign": 19,
+      "phish": 53
+    }
+  },
+  "respects_precision_floor": true,
+  "respects_runtime_budget": true
+}

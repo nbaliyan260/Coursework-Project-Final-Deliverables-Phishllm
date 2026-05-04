@@ -1,0 +1,9 @@
+metric,baseline,best
+candidate,seed_baseline,round2_thr90
+precision,1.0,1.0
+recall,0.7361,1.0
+F1,0.848,1.0
+FPR,0.0,0.0
+FNR,0.2639,0.0
+median runtime (s),1.7,0.55
+cost / 1K pages,2.3,0.5
