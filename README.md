@@ -28,6 +28,155 @@ Security Research Problem**, by **Nazish Baliyan**.
 
 ---
 
+## Get started (clone and run from scratch)
+
+**Prerequisites:** Python 3.9 – 3.12 and `make`. No GPU, no API keys, no
+internet access required for the default deterministic run.
+
+### Step 1 — Clone the repository
+
+```bash
+git clone https://github.com/nbaliyan260/Coursework-Project-Final-Deliverables-Phishllm.git
+cd Coursework-Project-Final-Deliverables-Phishllm
+```
+
+### Step 2 — Install Python dependencies
+
+```bash
+make install
+```
+
+This is shorthand for `python3 -m pip install -r requirements.txt` and
+installs `jsonschema`, `numpy`, `pandas`, `matplotlib` (+ optional
+`anthropic` and `google-generativeai` SDKs for the LLM proposer).
+You can also use a virtual environment if you prefer:
+
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+make install
+```
+
+### Step 3 — Run the unit tests (≈0.2 s)
+
+```bash
+make test
+```
+
+**Expected output:**
+
+```
+................................................                         [100%]
+48 passed in 0.16s
+```
+
+If you don't see `48 passed`, stop here and check your Python version
+(must be 3.9 – 3.12) and that `make install` finished without errors.
+
+### Step 4 — Pick a run mode
+
+You have **three options**, depending on how much you want to do.
+
+#### Option A — Just look at the bundled results (zero seconds)
+
+The repository already contains the frozen run outputs and figures
+from the official submission build, so you can browse them without
+running anything:
+
+- **Numerical results:** `runs/baseline/metrics.json`, `runs/search/top5.json`, `runs/search/search_summary.csv`, `runs/search/events.jsonl`
+- **Plots:** `artifacts/plots/*.png` (5 plots, also as `.pdf`)
+- **Tables:** `artifacts/tables/*.md` (4 tables, also as `.csv`)
+- **One-page case study (auto-generated):** `artifacts/case_study.md`
+- **One-page case study (final compiled PDF, submitted):** `phishllm_case_study_checked.pdf`
+
+#### Option B — Quick demo (≈10 seconds)
+
+Reproduces a small slice of the pipeline end-to-end:
+
+```bash
+make demo
+```
+
+This runs, in order:
+
+1. `make dataset` — synthesise the 142-site evaluation dataset (`SEED=7`).
+2. `make eval-baseline` — evaluate the baseline candidate.
+3. One heuristic search round.
+4. `make report` — render plots, tables, and the auto-generated case study.
+
+**Expected:** the command finishes in about 10 seconds and the
+`runs/` and `artifacts/` folders are repopulated. The baseline
+metrics in `runs/baseline/metrics.json` should match
+`precision=1.0, recall=0.7361, f1=0.848`.
+
+#### Option C — Full reproduction (≈30 seconds, what produces the headline numbers)
+
+```bash
+make reset                       # clear runs/* and artifacts/{plots,tables,logs}/*
+make dataset                     # 142 sites, deterministic from SEED=7
+make eval-baseline               # baseline candidate
+make search ROUNDS=4 SEED=7      # 20 candidates / 3 rounds / no_recall_gain_under_floor
+make report                      # 5 plots × {png,pdf}, 4 tables × {csv,md}, auto case study
+```
+
+**Expected outputs after `make report`:**
+
+- `runs/baseline/metrics.json` — `precision=1.0, recall=0.7361, f1=0.848`
+- `runs/search/top5.json[0].name` → `round2_thr90`
+- `runs/search/top5.json[0].metrics` → `precision=1.0, recall=1.0, f1=1.0, median_runtime_sec=0.55, estimated_cost_per_1k=0.5`
+- `runs/search/events.jsonl` → 26 events, ending with `{"event": "search_stopped", "reason": "no_recall_gain_under_floor", "round": 2}`
+- `artifacts/case_study.md` — one-page narrative with the same numbers
+
+These are the exact numbers shown under "Headline numbers" below and
+in the submitted PDF.
+
+### Step 5 — (Optional) Plug in an LLM proposer
+
+The pipeline runs fully offline by default with a deterministic
+heuristic proposer. To switch to an LLM proposer:
+
+```bash
+# Anthropic Claude (preferred)
+export ANTHROPIC_API_KEY="sk-ant-..."
+make search PROPOSER=anthropic ROUNDS=4 SEED=7
+
+# Google Gemini
+export GEMINI_API_KEY="..."
+make search PROPOSER=gemini ROUNDS=4 SEED=7
+
+# Or let the pipeline pick whichever key is set (anthropic > gemini > heuristic)
+make search PROPOSER=auto ROUNDS=4 SEED=7
+```
+
+When an LLM call actually runs, cumulative token usage and an
+estimated USD cost are logged to `runs/search/llm_cost_summary.json`.
+On any failure (missing SDK, network error, malformed JSON,
+schema-invalid proposal, duplicate candidate, etc.) the search
+transparently falls back to the heuristic proposer, so it never
+crashes when run offline.
+
+### Step 6 — Reset and re-run (any time)
+
+To wipe all run outputs and regenerate them from scratch:
+
+```bash
+make reset
+make dataset && make eval-baseline && make search ROUNDS=4 SEED=7 && make report
+```
+
+The numbers will be bit-for-bit identical because every step is seeded.
+
+### Common issues
+
+| Symptom | Likely cause / fix |
+|---|---|
+| `make: command not found` | Install `make` (macOS: `xcode-select --install`; Ubuntu: `sudo apt install build-essential`). |
+| `ModuleNotFoundError: No module named 'phishllm_search'` | You're running raw Python instead of `make`. Either use `make ...` or set `PYTHONPATH=src` first, e.g. `PYTHONPATH=src python3 -m phishllm_search.cli ...`. |
+| `pytest` is not found | Run `make install` (or `python3 -m pip install -r requirements-dev.txt` for the dev set). |
+| Python version errors | Use Python 3.9 – 3.12. Check with `python3 --version`. |
+| Plots look slightly different | Matplotlib version drift can change anti-aliasing of PDFs by a few bytes — the **numbers** in `*.csv` / `*.json` are bit-identical at `SEED=7`. |
+
+---
+
 ## Headline numbers (reproduced from this repo, `SEED=7`, `ROUNDS=4`)
 
 - **48 / 48 unit tests passing**.
