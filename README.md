@@ -4,22 +4,43 @@ AI-driven configuration search for a PhishLLM-style reference-based phishing
 detector — the final coursework project for **CS7602: Using AI to Explore a
 Security Research Problem**, by **Nazish Baliyan**.
 
-> **Submission folder:** `phishllm_final_new/`.
-> **Last end-to-end pipeline re-run:** 4 May 2026 (Python 3.9.6, macOS,
-> heuristic proposer, `SEED=7`, `ROUNDS=4`, no API keys set) —
-> **48 / 48 tests passed**, baseline `P=1.000, R=0.7361, F1=0.848`,
-> best `round2_thr90` `P=R=F1=1.000` at 0.55 s / \$0.50 per 1K pages.
-> Full audit sheet: see [`VERIFICATION.md §0`](VERIFICATION.md);
-> rebuild log: see [`UPDATES.md §12`](UPDATES.md).
-
-**Full manual (paper, every file, architecture, metrics):** see [`PROJECT_REFERENCE.md`](PROJECT_REFERENCE.md).
-**One-stop grader audit sheet** (Pareto rule + API cost tracking + prompt excerpt + reproduction commands): see [`VERIFICATION.md`](VERIFICATION.md).
-
 > Selected paper: Liu et al., *Less Defined Knowledge and More True Alarms:
 > Reference-based Phishing Detection without a Pre-defined Reference List*,
 > USENIX Security 2024
 > [\[paper\]](https://www.usenix.org/conference/usenixsecurity24/presentation/liu-yupei)
 > [\[code\]](https://github.com/Duanexiao/PhishLLM)
+
+---
+
+## Quick links (for the grader)
+
+| What | Where |
+|---|---|
+| **Final case study (1-page PDF)** | [`phishllm_case_study_checked.pdf`](phishllm_case_study_checked.pdf) |
+| **Final implementation appendix (PDF)** | [`phishllm_appendix_checked.pdf`](phishllm_appendix_checked.pdf) |
+| **Graded midterm report (PDF)** | [`Nazish_PhishLLM_Midterm.pdf`](Nazish_PhishLLM_Midterm.pdf) |
+| **Reproduce the headline numbers** | `make install` then `make demo` (≈10 s) or `make search ROUNDS=4 SEED=7 && make report` |
+| **Run the test suite** | `make test` (48 tests, ~0.2 s) |
+| **Project manual (everything in one file)** | [`PROJECT_REFERENCE.md`](PROJECT_REFERENCE.md) |
+| **Verification / reproduction checklist** | [`VERIFICATION.md`](VERIFICATION.md) |
+| **Changelog (what changed since midterm)** | [`UPDATES.md`](UPDATES.md) |
+| **Code entry point** | `src/phishllm_search/cli.py` (subcommands: `genset`, `eval`, `search`, `report`) |
+
+---
+
+## Headline numbers (reproduced from this repo, `SEED=7`, `ROUNDS=4`)
+
+- **48 / 48 unit tests passing**.
+- **Baseline (`seed_baseline`):** precision 1.000, recall 0.7361, F1 0.848, 1.70 s/page, $2.30/1K.
+- **Best (`round2_thr90`):** precision 1.000, recall **1.000**, F1 **1.000**, **0.55 s/page**, **$0.50/1K**.
+- All hard contracts satisfied: `precision ≥ 0.95`, `runtime ≤ 6 s/page`, `cost ≤ $12/1K`.
+
+The frozen run outputs and report artefacts live under `runs/` and `artifacts/`,
+so the grader can see the exact numbers without re-running anything.
+
+---
+
+## Project at a glance
 
 This repository implements the **midterm contract** end-to-end:
 
@@ -40,38 +61,50 @@ structured logs, plots, ranked tables, and a one-page practitioner case study.
 
 ## Repository layout
 
+The repository root *is* the project — there is no extra wrapper folder.
+
 ```
-phishllm_final_new/
+.
 ├── README.md                              <- you are here
 ├── Nazish_PhishLLM_Midterm.pdf            <- midterm report PDF (final-graded)
-├── phishllm_case_study_checked.pdf        <- one-page practitioner case study (final, submitted)
+├── phishllm_case_study_checked.pdf        <- one-page case study (final, submitted)
 ├── phishllm_appendix_checked.pdf          <- midterm-→-final implementation appendix (final, submitted)
-├── pyproject.toml                  <- modern Python project metadata
+├── PROJECT_REFERENCE.md                   <- full project manual
+├── VERIFICATION.md                        <- verification / reproduction checklist
+├── UPDATES.md                             <- changelog (what changed since midterm)
+├── pyproject.toml                         <- modern Python project metadata
 ├── requirements.txt
 ├── requirements-dev.txt
-├── Makefile                        <- common workflows
+├── Makefile                               <- common workflows (install/demo/search/report/test)
+├── LICENSE                                <- MIT
 ├── configs/
-│   ├── candidates/                 <- 8 seed candidate JSONs
+│   ├── candidates/                        <- 8 seed candidate JSONs
 │   └── schema/
-│       └── candidate.schema.json   <- the JSON Schema the evaluator validates against
-├── prompts/                        <- brand / CRP prompt variants + meta-search prompt
-├── data/                           <- empty until `make dataset` (142 per-site folders + labels.csv)
+│       └── candidate.schema.json          <- the JSON Schema the evaluator validates against
+├── prompts/                               <- 8 brand / CRP prompt variants
+├── data/                                  <- 142-site dataset (labels.csv + per-site folders, generated with seed=7)
 ├── src/
 │   └── phishllm_search/
-│       ├── backends/               <- mock / official / replay
-│       ├── evaluator/              <- metrics, failure buckets, confusion matrix, runner
-│       ├── search/                 <- proposers, selector, stopping, loop
-│       ├── reporting/              <- plots, tables, case-study generator
+│       ├── backends/                      <- mock / official_repo / replay
+│       ├── evaluator/                     <- metrics, failure buckets, confusion matrix, runner
+│       ├── search/                        <- proposers, selector (incl. Pareto rule), stopping, loop
+│       ├── reporting/                     <- plots, tables, case-study generator
 │       ├── utils/
 │       ├── cli.py
 │       ├── dataset.py
 │       ├── genset.py
 │       └── schema.py
-├── tests/                          <- 48 unit tests
-├── slurm/                          <- ready-to-submit HPC scripts
-├── runs/                           <- search outputs (gitignored)
-└── artifacts/                      <- plots, tables, case study (gitignored)
+├── tests/                                 <- 48 unit tests
+├── slurm/                                 <- 3 HPC sbatch scripts
+├── runs/                                  <- frozen run outputs (baseline + 3 search rounds, tracked for grading)
+└── artifacts/                             <- frozen report artefacts (5 plots × {png,pdf}, 4 tables × {csv,md})
 ```
+
+> **Note on `runs/` and `artifacts/`.** These folders are **tracked on
+> purpose** so the grader sees the exact numbers and figures from the
+> bundled run without having to re-execute the pipeline. They can be
+> regenerated bit-for-bit at any time with
+> `make reset && make dataset && make eval-baseline && make search ROUNDS=4 SEED=7 && make report`.
 
 ---
 

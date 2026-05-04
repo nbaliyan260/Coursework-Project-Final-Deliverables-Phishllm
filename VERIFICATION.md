@@ -1,14 +1,14 @@
-# Verification — final-submission checklist
+# Verification / Reproduction Checklist
 
 **Author:** Nazish Baliyan
 **Course:** CS7602 — Using AI to Explore a Security Research Problem
-**Submission folder:** `phishllm_final_new/`
 **Last end-to-end pipeline re-run:** 4 May 2026, on macOS (Python 3.9.6) — see §0 below.
 
-This file is a one-stop audit sheet for a grader. It shows — with the
-exact source paths and line numbers — where each of the three
-final-submission feedback items from the professor is addressed, plus
-the top of the unified multi-provider LLM proposer for quick inspection.
+This file is a quick reference for anyone reading the project (the
+professor, a TA, or future-me): it shows — with exact source paths
+and line numbers — where each of the three final-submission feedback
+items is addressed, and includes the top of the unified multi-provider
+LLM proposer for easy inspection.
 
 ---
 
@@ -273,10 +273,11 @@ pipeline works with no API keys set.
 
 ---
 
-## 5. How a grader can re-verify everything in under a minute
+## 5. How to re-verify everything in under a minute
 
 ```bash
-cd phishllm_final_new
+git clone https://github.com/nbaliyan260/Coursework-Project-Final-Deliverables-Phishllm.git
+cd Coursework-Project-Final-Deliverables-Phishllm
 make install                        # one-off: jsonschema, numpy, pandas, matplotlib (optional anthropic/gemini)
 make test                           # -> 48 / 48 passed in ~0.16 s
 make reset                          # wipe runs/ and artifacts/ (optional, for a clean run)

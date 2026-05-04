@@ -69,7 +69,7 @@ F1 {baseline_f1:.3f}). That is a recall improvement of
 
 The most informative failure bucket across the search was **{top_bucket}** ({top_bucket_count}
 events). When the search disabled `popularity_validation`, alias false-positives spiked,
-confirming that this stage is genuinely load-bearing rather than a paper-only convenience.
+which shows that this stage matters a lot in practice, not just for the paper's setup.
 When the recall-leaning prompts were combined with `mismatch_or_crp` fusion, recall
 improved on hidden-login cases without breaching the precision floor, but only when
 `prompt_defense` remained on -- removing it re-introduced prompt-injection failures.
@@ -77,10 +77,11 @@ improved on hidden-login cases without breaching the precision floor, but only w
 ## Search behaviour
 The search trace plot (`search_trace_recall.png`) shows the best-recall-so-far growing
 monotonically under the precision floor, with the largest jumps in the early rounds and
-diminishing returns thereafter -- the textbook signature of a search loop with useful but
-finite signal. The Pareto frontier (`pareto_recall_vs_runtime.png`) shows three distinct
-operating points: a low-cost frontier, a balanced cached-validation point, and a high-recall
-robust point. The final stopping reason was *{stop_reason}*.
+smaller gains later. This is the expected pattern for an iterative search: big wins first,
+then diminishing returns once the easy fixes are taken. The Pareto frontier
+(`pareto_recall_vs_runtime.png`) shows three distinct operating points: a low-cost frontier,
+a balanced cached-validation point, and a high-recall robust point. The final stopping
+reason was *{stop_reason}*.
 
 ## Lessons for practitioners
 1. **Treat popularity validation as part of the contract, not an optimisation knob.**
@@ -91,8 +92,8 @@ robust point. The final stopping reason was *{stop_reason}*.
 3. **Cached validation is almost free.** Replacing the live Google check with a cached
    validator preserved most of the recall improvement while halving median runtime.
 4. **Prompt-injection defence has a near-zero cost.** Keeping `prompt_defense=true`
-   never harmed any operating point we observed and was load-bearing for the
-   prompt-injection samples.
+   never harmed any operating point we observed and mattered a lot for catching the
+   prompt-injection samples — turning it off let those failures back in.
 5. **AI-driven search worked best when the feedback was structured.** Passing the LLM
    proposer the failure-bucket histogram, the top-k *and* a diverse under-performer
    measurably reduced the number of useless duplicate proposals compared to passing
